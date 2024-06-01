@@ -204,3 +204,167 @@ sudo apt-get install ros-noetic-turtlesim
 Congratulations! You have completed the basic ROS workshop. You now have a foundational understanding of ROS concepts, commands, and how to work with the Turtlesim package. Additionally, you have learned about ROS services, actions, and the role of the ROS Master in managing communications. Keep exploring ROS to build more complex and exciting robotic applications.
 
 Happy coding!
+
+
+
+# TurtleBot3 Simulation Workshop Tutorial
+
+## Introduction
+
+Welcome to the TurtleBot3 simulation workshop! This tutorial will guide you through setting up and using TurtleBot3 in a simulated environment using RViz and Gazebo. You will learn how to perform basic movements, SLAM (Simultaneous Localization and Mapping), save maps, and navigate autonomously.
+
+## Prerequisites
+
+- Basic knowledge of Linux commands
+- Ubuntu (preferably 18.04 or 20.04)
+- ROS Noetic installed on your machine
+- TurtleBot3 packages installed
+
+## Workshop Outline
+
+1. Introduction to TurtleBot3
+2. Basic Setup
+3. RViz Simulation
+4. Gazebo Simulation
+    - Empty World
+    - Predefined World
+    - Teleoperation
+5. SLAM
+6. Map Saving
+7. Autonomous Navigation
+
+---
+
+## 1. Introduction to TurtleBot3
+
+### What is TurtleBot3?
+
+TurtleBot3 is a low-cost, personal robot kit with open-source software. It is designed to support education, research, and product prototyping.
+
+---
+
+## 2. Basic Setup
+
+### Installing TurtleBot3 Packages
+
+1. Install TurtleBot3 packages:
+    ```bash
+    sudo apt-get update
+    sudo apt-get install ros-noetic-turtlebot3 ros-noetic-turtlebot3-simulations
+    ```
+
+2. Set the TurtleBot3 model environment variable:
+    ```bash
+    echo "export TURTLEBOT3_MODEL=burger" >> ~/.bashrc
+    source ~/.bashrc
+    ```
+
+---
+
+## 3. RViz Simulation
+
+### Launching TurtleBot3 in RViz
+
+1. Open a terminal and start the ROS Master:
+    ```bash
+    roscore
+    ```
+
+2. In a new terminal, launch the TurtleBot3 simulation in RViz:
+    ```bash
+    roslaunch turtlebot3_fake turtlebot3_fake.launch
+    ```
+
+3. RViz will start, showing the TurtleBot3 model. You can use RViz to visualize different sensor data and robot states.
+
+---
+
+## 4. Gazebo Simulation
+
+### Launching TurtleBot3 in an Empty World
+
+1. Open a terminal and launch Gazebo with an empty world:
+    ```bash
+    roslaunch turtlebot3_gazebo turtlebot3_empty_world.launch
+    ```
+
+### Launching TurtleBot3 in a Predefined World
+
+1. Open a terminal and launch Gazebo with a predefined world:
+    ```bash
+    roslaunch turtlebot3_gazebo turtlebot3_world.launch
+    ```
+
+### Teleoperation in Gazebo
+
+1. Open a terminal and run the teleop node to control TurtleBot3:
+    ```bash
+    roslaunch turtlebot3_teleop turtlebot3_teleop_key.launch
+    ```
+2. Use the keyboard to move the robot around the simulation.
+
+---
+
+## 5. SLAM (Simultaneous Localization and Mapping)
+
+### Running SLAM with TurtleBot3
+
+1. Open a terminal and launch the TurtleBot3 in a Gazebo world:
+    ```bash
+    roslaunch turtlebot3_gazebo turtlebot3_world.launch
+    ```
+
+2. In a new terminal, start the SLAM node:
+    ```bash
+    roslaunch turtlebot3_slam turtlebot3_slam.launch slam_methods:=gmapping
+    ```
+
+3. In another terminal, run the teleop node to control the robot and explore the environment:
+    ```bash
+    roslaunch turtlebot3_teleop turtlebot3_teleop_key.launch
+    ```
+
+4. Move the robot around to create a map in RViz.
+
+---
+
+## 6. Map Saving
+
+### Saving the Map
+
+1. Once you are satisfied with the map created, save it using the following command in a new terminal:
+    ```bash
+    rosrun map_server map_saver -f ~/map
+    ```
+
+2. This will save the map as `map.pgm` and `map.yaml` in your home directory.
+
+---
+
+## 7. Autonomous Navigation
+
+### Running Autonomous Navigation
+
+1. Launch the TurtleBot3 in a Gazebo world:
+    ```bash
+    roslaunch turtlebot3_gazebo turtlebot3_world.launch
+    ```
+
+2. Launch the navigation stack with your saved map:
+    ```bash
+    roslaunch turtlebot3_navigation turtlebot3_navigation.launch map_file:=$HOME/map.yaml
+    ```
+
+3. Use RViz to set an initial pose estimate:
+    - Click on the "2D Pose Estimate" button and click on the map to set the initial pose.
+
+4. Use RViz to set a goal for autonomous navigation:
+    - Click on the "2D Nav Goal" button and click on the map to set the target destination.
+
+---
+
+## Conclusion
+
+Congratulations! You have completed the TurtleBot3 simulation workshop. You now have a foundational understanding of simulating TurtleBot3 using RViz and Gazebo, performing SLAM, saving maps, and navigating autonomously. Keep exploring and building upon these skills to create more advanced robotic applications.
+
+Happy coding!
