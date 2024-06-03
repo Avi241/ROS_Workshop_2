@@ -8,7 +8,7 @@ Welcome to the basic ROS workshop! This tutorial is designed to introduce you to
 
 - Basic knowledge of Linux commands
 - Ubuntu (preferably 18.04 or 20.04)
-- ROS Noetic installed on your machine
+- ROS melodic installed on your machine
 
 ## Workshop Outline
 
@@ -62,7 +62,7 @@ Actions in ROS are designed for tasks that take an extended period and can be pr
 ### Setting Up ROS Environment
 
 ```bash
-source /opt/ros/noetic/setup.bash
+source /opt/ros/melodic/setup.bash
 ```
 
 ### Creating a ROS Workspace
@@ -108,7 +108,7 @@ source /opt/ros/noetic/setup.bash
 ### Installing Turtlesim
 
 ```bash
-sudo apt-get install ros-noetic-turtlesim
+sudo apt-get install ros-melodic-turtlesim
 ```
 
 ### Launching Turtlesim
@@ -217,7 +217,7 @@ Welcome to the TurtleBot3 simulation workshop! This tutorial will guide you thro
 
 - Basic knowledge of Linux commands
 - Ubuntu (preferably 18.04 or 20.04)
-- ROS Noetic installed on your machine
+- ROS melodic installed on your machine
 - TurtleBot3 packages installed
 
 ## Workshop Outline
@@ -250,7 +250,7 @@ TurtleBot3 is a low-cost, personal robot kit with open-source software. It is de
 1. Install TurtleBot3 packages:
     ```bash
     sudo apt-get update
-    sudo apt-get install ros-noetic-turtlebot3 ros-noetic-turtlebot3-simulations
+    sudo apt-get install ros-melodic-turtlebot3 ros-melodic-turtlebot3-simulations
     ```
 
 2. Set the TurtleBot3 model environment variable:
